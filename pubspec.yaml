@@ -1,0 +1,38 @@
+name: ocrtextz
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.10.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  dio: ^5.9.0
+  flutter_dotenv: ^6.0.0
+  image_picker: ^1.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - .env
+  
+  fonts:
+    - family: Lora
+      fonts:
+      - asset: assets/fonts/Lora_title.ttf
+    
+    - family: NotoSans
+      fonts:
+      - asset: assets/fonts/NotoSans_label.ttf
+
+    - family: Nunito
+      fonts:
+      - asset: assets/fonts/Nunito_body.ttf
+      
