@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ocrtextz/service/connection.dart';
 import 'package:ocrtextz/service/utils.dart';
+import 'package:ocrtextz/widget/home/appbar.dart';
+import 'package:ocrtextz/widget/home/pickimage.dart';
 
 class HomeScreen extends StatelessWidget {
   final ultis = UtilsTool();
@@ -10,23 +12,44 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(12),
+        child: SafeArea(
           child: Column(
+            spacing: 10,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Pick Image and upload for testing"),
-              ElevatedButton(
-                onPressed: () async {
-                  await ultis.pickImage().then((value) async {
-                    if (value != null) {
-                      await con.uploadImage(value);
-                    }
-                  });
-                },
-                child: Text("Pick Image"),
+              AppbarHome(),
+              Text(
+                "Instant Text Scanner",
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontSize: 28),
               ),
+              Text(
+                'Convert any image into editable text in seconds',
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+              SizedBox(height: 20),
+
+              ButtonPickImage(),
             ],
           ),
+        ),
+      ),
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadiusGeometry.only(
+          topRight: Radius.circular(20),
+          topLeft: Radius.circular(20),
+        ),
+        child: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.history),
+              label: 'History',
+            ),
+          ],
         ),
       ),
     );
