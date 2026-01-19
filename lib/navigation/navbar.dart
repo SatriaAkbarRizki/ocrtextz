@@ -22,13 +22,18 @@ class Navbar extends StatelessWidget {
             ),
             child: BottomNavigationBar(
               onTap: (value) => stateNavbar.state = value,
+
               items: [
                 BottomNavigationBarItem(
-                  icon: SvgPicture.asset('assets/icons/Home_unclick.svg'),
+                  icon: indexNavbar == 0
+                      ? SvgPicture.asset('assets/icons/Home_click.svg')
+                      : SvgPicture.asset('assets/icons/Home_unclick.svg'),
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
-                  icon: SvgPicture.asset('assets/icons/History_unclick.svg'),
+                  icon: indexNavbar == 1
+                      ? SvgPicture.asset('assets/icons/History_click.svg')
+                      : SvgPicture.asset('assets/icons/History_unclick.svg'),
                   label: 'History',
                 ),
               ],

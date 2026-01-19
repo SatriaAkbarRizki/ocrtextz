@@ -34,136 +34,117 @@ class ButtonPickImage extends StatelessWidget {
           color: Color(0xffefe8de),
           child: Padding(
             padding: const EdgeInsets.all(10),
-            child: Column(
-              spacing: 10,
+            child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              spacing: 10,
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  spacing: 10,
-                  children: [
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          showModalBottomSheet(
-                            isDismissible: true,
-                            isScrollControlled: true,
-                            showDragHandle: true,
-                            useSafeArea: true,
-                            context: context,
-                            builder: (context) => SizedBox(
-                              // height: MediaQuery.of(context).size.height / 1.35,
-                              width: double.infinity,
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 20,
-                                  right: 20,
-                                  bottom: 10,
-                                  top: 10,
-                                ),
-                                child: ListView(
-                                  children: [
-                                    Text(
-                                      'Result',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleMedium
-                                          ?.copyWith(fontSize: 24),
-                                    ),
-                                    Divider(thickness: 2),
-                                    Loadingresult(),
-                                    // SelectableText(
-                                    //   cursorColor: Color(0xffefe8de),
-                                    //   selectionColor: Color(0xffefe8de),
-                                    //   sentenceLorem,
-                                    //   style: Theme.of(context)
-                                    //       .textTheme
-                                    //       .bodySmall
-                                    //       ?.copyWith(height: 1.5, fontSize: 14),
-
-                                    //   textAlign: TextAlign.justify,
-                                    // ),
-                                  ],
-                                ),
-                              ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        isDismissible: true,
+                        isScrollControlled: true,
+                        showDragHandle: true,
+                        useSafeArea: true,
+                        context: context,
+                        builder: (context) => SizedBox(
+                          // height: MediaQuery.of(context).size.height / 1.35,
+                          width: double.infinity,
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              left: 20,
+                              right: 20,
+                              bottom: 10,
+                              top: 10,
                             ),
-                          );
-                        },
-                        style: Theme.of(context).elevatedButtonTheme.style
-                            ?.copyWith(
-                              backgroundColor: WidgetStatePropertyAll(
-                                Colors.black,
-                              ),
-                            ),
-                        child: Flexible(
-                          child: SizedBox(
-                            height: 180,
-
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              spacing: 10,
+                            child: ListView(
                               children: [
-                                SvgPicture.asset(
-                                  'assets/icons/Gallery.svg',
-                                  height: 40,
-                                  colorFilter: ColorFilter.mode(
-                                    Colors.white,
-                                    BlendMode.srcIn,
-                                  ),
-                                ),
                                 Text(
-                                  'Upload Image',
-                                  style: Theme.of(context).textTheme.labelSmall
-                                      ?.copyWith(color: Colors.white),
+                                  'Result',
+                                  style: Theme.of(context).textTheme.titleMedium
+                                      ?.copyWith(fontSize: 24),
                                 ),
+                                Divider(thickness: 2),
+                                Loadingresult(),
+                                // SelectableText(
+                                //   cursorColor: Color(0xffefe8de),
+                                //   selectionColor: Color(0xffefe8de),
+                                //   sentenceLorem,
+                                //   style: Theme.of(context)
+                                //       .textTheme
+                                //       .bodySmall
+                                //       ?.copyWith(height: 1.5, fontSize: 14),
+
+                                //   textAlign: TextAlign.justify,
+                                // ),
                               ],
                             ),
                           ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
+                    style: Theme.of(context).elevatedButtonTheme.style
+                        ?.copyWith(
+                          backgroundColor: WidgetStatePropertyAll(Colors.black),
+                        ),
+                    child: SizedBox(
+                      height: 180,
 
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: Theme.of(context).elevatedButtonTheme.style
-                            ?.copyWith(
-                              backgroundColor: WidgetStatePropertyAll(
-                                Colors.black,
-                              ),
-                            ),
-                        child: Flexible(
-                          child: SizedBox(
-                            height: 180,
-
-                            child: Column(
-                              spacing: 10,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  'assets/icons/Camera.svg',
-                                  height: 40,
-                                  colorFilter: ColorFilter.mode(
-                                    Colors.white,
-                                    BlendMode.srcIn,
-                                  ),
-                                ),
-                                Text(
-                                  'Take Photo',
-                                  style: Theme.of(context).textTheme.labelSmall
-                                      ?.copyWith(color: Colors.white),
-                                ),
-                              ],
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        spacing: 10,
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/Gallery.svg',
+                            height: 40,
+                            colorFilter: ColorFilter.mode(
+                              Colors.white,
+                              BlendMode.srcIn,
                             ),
                           ),
-                        ),
+                          Text(
+                            'Upload Image',
+                            style: Theme.of(context).textTheme.labelSmall
+                                ?.copyWith(color: Colors.white),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
+                  ),
                 ),
-                SizedBox(height: 5),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: Theme.of(context).elevatedButtonTheme.style
+                        ?.copyWith(
+                          backgroundColor: WidgetStatePropertyAll(Colors.black),
+                        ),
+                    child: SizedBox(
+                      height: 180,
+
+                      child: Column(
+                        spacing: 10,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/Camera.svg',
+                            height: 40,
+                            colorFilter: ColorFilter.mode(
+                              Colors.white,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          Text(
+                            'Take Photo',
+                            style: Theme.of(context).textTheme.labelSmall
+                                ?.copyWith(color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
