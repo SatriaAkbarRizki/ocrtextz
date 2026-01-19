@@ -28,6 +28,7 @@ flutter:
   assets:
     - .env
     - assets/icons/
+    - assets/illustration/
   fonts:
     - family: Lora
       fonts:

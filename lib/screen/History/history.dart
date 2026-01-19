@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:ocrtextz/screen/History/detail.dart';
+import 'package:ocrtextz/widget/history/empty.dart';
 
 class HistoryScreen extends StatelessWidget {
   const HistoryScreen({super.key});
@@ -17,6 +18,7 @@ class HistoryScreen extends StatelessWidget {
           padding: EdgeInsets.all(12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+
             spacing: 10,
             children: [
               Text(
@@ -29,7 +31,7 @@ class HistoryScreen extends StatelessWidget {
                 'Collection all text from you scan image',
                 style: Theme.of(context).textTheme.bodySmall,
               ),
-
+              // EmptyHistory(),
               Expanded(
                 child: ListView.builder(
                   itemCount: 10,
