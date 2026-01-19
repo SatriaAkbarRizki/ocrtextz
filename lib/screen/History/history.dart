@@ -1,4 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+
+import 'package:flutter_svg/svg.dart';
+
 import 'package:ocrtextz/screen/History/detail.dart';
 
 class HistoryScreen extends StatelessWidget {
@@ -37,20 +42,41 @@ class HistoryScreen extends StatelessWidget {
                     ),
                     child: Hero(
                       tag: 'hero-cardhistory-$index',
-                      child: Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: Column(
-                            children: [
-                              Text(
-                                'Lorem ipsum dolor sit amet consectetur adipiscing elit. Ex sapien vitae pellentesque sem placerat in id. Pretium tellus duis convallis tempus leo eu aenean. Urna tempor pulvinar vivamus fringilla lacus nec metus. Iaculis massa nisl malesuada lacinia integer nunc posuere. Semper vel class aptent taciti sociosqu ad litora. Conubia nostra inceptos himenaeos orci varius natoque penatibus. Dis parturient montes nascetur ridiculus mus donec rhoncus. Nulla molestie mattis scelerisque maximus eget fermentum odio. Purus est efficitur laoreet mauris pharetra vestibulum fusce.',
-                                maxLines: 4,
-                                style: Theme.of(
-                                  context,
-                                ).textTheme.bodySmall?.copyWith(height: 1.5),
-                                textAlign: TextAlign.justify,
-                              ),
-                            ],
+                      child: Dismissible(
+                        key: ValueKey('historyList-$index'),
+
+                        background: Container(
+                          padding: EdgeInsets.all(35),
+                          alignment: Alignment.centerRight,
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: SvgPicture.asset(
+                            'assets/icons/Delete.svg',
+                            colorFilter: ColorFilter.mode(
+                              Colors.white,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                        ),
+                        direction: DismissDirection.endToStart,
+
+                        child: Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(12),
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Lorem ipsum dolor sit amet consectetur adipiscing elit. Ex sapien vitae pellentesque sem placerat in id. Pretium tellus duis convallis tempus leo eu aenean. Urna tempor pulvinar vivamus fringilla lacus nec metus. Iaculis massa nisl malesuada lacinia integer nunc posuere. Semper vel class aptent taciti sociosqu ad litora. Conubia nostra inceptos himenaeos orci varius natoque penatibus. Dis parturient montes nascetur ridiculus mus donec rhoncus. Nulla molestie mattis scelerisque maximus eget fermentum odio. Purus est efficitur laoreet mauris pharetra vestibulum fusce.',
+                                  maxLines: 4,
+                                  style: Theme.of(
+                                    context,
+                                  ).textTheme.bodySmall?.copyWith(height: 1.5),
+                                  textAlign: TextAlign.justify,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
