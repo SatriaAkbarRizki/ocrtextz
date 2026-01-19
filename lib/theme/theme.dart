@@ -56,5 +56,13 @@ class MyThemes {
       selectedIconTheme: IconThemeData(color: Colors.black),
       backgroundColor: Color(0xfff2e4d9),
     ),
+
+    iconButtonTheme: IconButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: WidgetStatePropertyAll(Color(0xfff2e4d9)),
+      ),
+    ),
+
+    cardTheme: CardThemeData(color: Color(0xfff2e4d9)),
   );
 }

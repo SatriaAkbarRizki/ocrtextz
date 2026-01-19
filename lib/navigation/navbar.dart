@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:ocrtextz/screen/riverpod/navstate.dart';
+import 'package:ocrtextz/riverpod/navstate.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({super.key});

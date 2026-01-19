@@ -31,7 +31,7 @@ class ButtonPickImage extends StatelessWidget {
           ),
         ),
         Card(
-          color: Color(0xffefe8de),
+          
           child: Padding(
             padding: const EdgeInsets.all(10),
             child: Row(
