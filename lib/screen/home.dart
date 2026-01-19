@@ -38,24 +38,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadiusGeometry.only(
-          topRight: Radius.circular(20),
-          topLeft: Radius.circular(20),
-        ),
-        child: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset('assets/icons/Home_unclick.svg'),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset('assets/icons/History_unclick.svg'),
-              label: 'History',
-            ),
-          ],
-        ),
-      ),
+      
     );
   }
 }
