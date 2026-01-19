@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class ButtonPickImage extends StatelessWidget {
   const ButtonPickImage({super.key});
@@ -50,13 +51,20 @@ class ButtonPickImage extends StatelessWidget {
                             ),
                         child: Flexible(
                           child: SizedBox(
-                            height: 100,
+                            height: 180,
 
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               spacing: 10,
                               children: [
-                                Icon(Icons.image),
+                                SvgPicture.asset(
+                                  'assets/icons/Gallery.svg',
+                                  height: 40,
+                                  colorFilter: ColorFilter.mode(
+                                    Colors.white,
+                                    BlendMode.srcIn,
+                                  ),
+                                ),
                                 Text(
                                   'Upload Image',
                                   style: Theme.of(context).textTheme.labelSmall
@@ -80,13 +88,20 @@ class ButtonPickImage extends StatelessWidget {
                             ),
                         child: Flexible(
                           child: SizedBox(
-                            height: 100,
+                            height: 180,
 
                             child: Column(
                               spacing: 10,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(Icons.image),
+                                SvgPicture.asset(
+                                  'assets/icons/Camera.svg',
+                                  height: 40,
+                                  colorFilter: ColorFilter.mode(
+                                    Colors.white,
+                                    BlendMode.srcIn,
+                                  ),
+                                ),
                                 Text(
                                   'Take Photo',
                                   style: Theme.of(context).textTheme.labelSmall
@@ -100,6 +115,7 @@ class ButtonPickImage extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(height: 5),
               ],
             ),
           ),

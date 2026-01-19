@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:ocrtextz/service/connection.dart';
 import 'package:ocrtextz/service/utils.dart';
 import 'package:ocrtextz/widget/home/appbar.dart';
@@ -12,9 +13,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(12),
-        child: SafeArea(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(12),
           child: Column(
             spacing: 10,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,9 +45,12 @@ class HomeScreen extends StatelessWidget {
         ),
         child: BottomNavigationBar(
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(
-              icon: Icon(Icons.history),
+              icon: SvgPicture.asset('assets/icons/Home_unclick.svg'),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/icons/History_unclick.svg'),
               label: 'History',
             ),
           ],

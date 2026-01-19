@@ -41,7 +41,7 @@ class MyThemes {
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: Colors.black,
-      
+
       selectedLabelStyle: TextStyle(
         fontFamily: 'NotoSans',
         color: Colors.black,
