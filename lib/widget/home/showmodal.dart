@@ -64,12 +64,24 @@ Future<void> showModalBottomSheetHome(BuildContext context) async {
                       ),
                     );
                   },
-                  error: (error, stackTrace) => Text(
-                    error.toString(),
-                    style: Theme.of(
-                      context,
-                    ).textTheme.bodySmall?.copyWith(color: Colors.red),
-                  ),
+                  error: (error, stackTrace) {
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      if (!ref.read(visibleText)) {
+                        ref.read(visibleText.notifier).state = true;
+                      }
+                    });
+                    return AnimatedOpacity(
+                      opacity: visibleData ? 1.0 : 0.0,
+                      duration: Duration(milliseconds: 500),
+                      child: Text(
+                        'Have error on server, please try again ',
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    );
+                  },
                   loading: () => Loadingresult(),
                 ),
               ],

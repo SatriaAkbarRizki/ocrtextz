@@ -6,7 +6,7 @@ import 'package:ocrtextz/riverpod/service/sendimage.dart';
 import 'package:ocrtextz/widget/home/showmodal.dart';
 
 class ButtonPickImage extends StatelessWidget {
-  ButtonPickImage({super.key});
+  const ButtonPickImage({super.key});
 
   @override
   Widget build(BuildContext context) {
