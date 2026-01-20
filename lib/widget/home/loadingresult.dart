@@ -11,7 +11,7 @@ class Loadingresult extends StatelessWidget {
       spacing: 10,
       children: [
         Shimmer(
-          duration: Duration(seconds: 3),
+          duration: Duration(milliseconds: 1500),
 
           child: Container(
             height: 15,
@@ -23,7 +23,7 @@ class Loadingresult extends StatelessWidget {
           ),
         ),
         Shimmer(
-          duration: Duration(seconds: 3),
+          duration: Duration(milliseconds: 1500),
 
           child: Container(
             height: 15,
@@ -35,7 +35,7 @@ class Loadingresult extends StatelessWidget {
           ),
         ),
         Shimmer(
-          duration: Duration(seconds: 3),
+          duration: Duration(milliseconds: 1500),
 
           child: Container(
             height: 15,

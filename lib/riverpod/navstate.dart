@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod/legacy.dart';
 import 'package:ocrtextz/screen/History/history.dart';
 import 'package:ocrtextz/screen/home.dart';
 
