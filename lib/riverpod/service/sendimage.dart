@@ -5,6 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ocrtextz/model/scanocr.dart';
+import 'package:ocrtextz/riverpod/homeriverpod.dart';
 import 'package:ocrtextz/riverpod/imutable.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -20,7 +21,8 @@ class UploadImage extends _$UploadImage {
   }
 
   Future uploadImage(XFile image) async {
-    ref.read(visibleText.notifier).state = false;
+    ref.invalidate(visibleText);
+    ref.invalidate(headerTitleProvider);
     state = AsyncLoading();
 
     final imageFile = FormData.fromMap({
