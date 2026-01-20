@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ocrtextz/riverpod/homeriverpod.dart';
 import 'package:ocrtextz/riverpod/service/sendimage.dart';
 import 'package:ocrtextz/widget/home/loadingresult.dart';
 
@@ -22,6 +23,7 @@ Future<void> showModalBottomSheetHome(BuildContext context) async {
       builder: (context, ref, child) {
         final futureScanOCR = ref.watch(uploadImageProvider);
         final visibleData = ref.watch(visibleText);
+        final headerTitle = ref.watch(headerTitleProvider);
         return SizedBox(
           width: double.infinity,
           child: Padding(
@@ -33,11 +35,30 @@ Future<void> showModalBottomSheetHome(BuildContext context) async {
             ),
             child: ListView(
               children: [
-                Text(
-                  'Result',
-                  style: Theme.of(
-                    context,
-                  ).textTheme.titleMedium?.copyWith(fontSize: 24),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 500),
+                    transitionBuilder: (child, animation) {
+                      return FadeTransition(
+                        opacity: animation,
+                        child: SlideTransition(
+                          position: Tween<Offset>(
+                            begin: Offset(0.0, 0.0),
+                            end: Offset.zero,
+                          ).animate(animation),
+                          child: child,
+                        ),
+                      );
+                    },
+                    child: Text(
+                      headerTitle,
+                      key: ValueKey(headerTitle),
+                      style: Theme.of(
+                        context,
+                      ).textTheme.titleMedium?.copyWith(fontSize: 24),
+                    ),
+                  ),
                 ),
                 Divider(thickness: 2),
                 futureScanOCR.when(
@@ -46,6 +67,15 @@ Future<void> showModalBottomSheetHome(BuildContext context) async {
                       if (!ref.read(visibleText)) {
                         ref.read(visibleText.notifier).state = true;
                       }
+
+                      Future.delayed(Duration(milliseconds: 1500)).whenComplete(
+                        () {
+                          if (context.mounted) {
+                            ref.read(headerTitleProvider.notifier).state =
+                                "Saving to History";
+                          }
+                        },
+                      );
                     });
                     return AnimatedOpacity(
                       opacity: visibleData ? 1.0 : 0.0,
