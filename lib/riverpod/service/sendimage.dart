@@ -30,22 +30,31 @@ class UploadImage extends _$UploadImage {
       ),
     });
 
-    final response = await ref
-        .read(dioProvider)
-        .post(
-          "${ref.read(linkUrlProvider)}/files/uploadImage",
-          options: Options(headers: {"apiKey": dotenv.get("APIKEY")}),
+    state = await AsyncValue.guard(() async {
+      final response = await ref
+          .read(dioProvider)
+          .post(
+            "${ref.read(linkUrlProvider)}/files/uploadImage",
+            options: Options(headers: {"apiKey": dotenv.get("APIKEY")}),
 
-          data: imageFile,
-        );
+            data: imageFile,
+          );
 
-    if (response.statusCode == 200) {
-      final json = ScanOcrModel.fromJson(response.data);
-      log(json.toJson().toString());
+      if (response.statusCode == 200) {
+        final json = ScanOcrModel.fromJson(response.data);
+        log(json.toJson().toString());
 
-      state = AsyncData(json);
-    } else {
-      state = AsyncError(response.statusMessage.toString(), StackTrace.empty);
-    }
+        return json;
+      }
+    });
+
+    // if (response.statusCode == 200) {
+    //   final json = ScanOcrModel.fromJson(response.data);
+    //   log(json.toJson().toString());
+
+    //   state = AsyncData(json);
+    // } else {
+    //   state = AsyncError(response.statusMessage.toString(), StackTrace.empty);
+    // }
   }
 }
