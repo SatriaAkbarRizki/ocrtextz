@@ -8,15 +8,20 @@ String sentenceLorem =
 
 Future<void> showModalBottomSheetHome(BuildContext context) async {
   return showModalBottomSheet(
+    backgroundColor: Color(0xfff7f4ed),
     isDismissible: true,
     isScrollControlled: true,
     showDragHandle: true,
     useSafeArea: true,
-    
+    transitionAnimationController: AnimationController(
+      vsync: Navigator.of(context),
+      duration: Duration(milliseconds: 600),
+    ),
     context: context,
     builder: (context) => Consumer(
       builder: (context, ref, child) {
         final futureScanOCR = ref.watch(uploadImageProvider);
+        final visibleData = ref.watch(visibleText);
         return SizedBox(
           width: double.infinity,
           child: Padding(
@@ -36,16 +41,29 @@ Future<void> showModalBottomSheetHome(BuildContext context) async {
                 ),
                 Divider(thickness: 2),
                 futureScanOCR.when(
-                  data: (data) => SelectableText(
-                    cursorColor: Color(0xffefe8de),
-                    selectionColor: Color(0xffefe8de),
-                    data?.message ?? "",
-                    style: Theme.of(
-                      context,
-                    ).textTheme.bodySmall?.copyWith(height: 1.5, fontSize: 14),
+                  data: (data) {
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      if (!ref.read(visibleText)) {
+                        ref.read(visibleText.notifier).state = true;
+                      }
+                    });
+                    return AnimatedOpacity(
+                      opacity: visibleData ? 1.0 : 0.0,
+                      duration: Duration(milliseconds: 500),
 
-                    textAlign: TextAlign.justify,
-                  ),
+                      child: SelectableText(
+                        cursorColor: Color(0xffefe8de),
+                        selectionColor: Color(0xffefe8de),
+                        data?.message ?? "",
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          height: 1.5,
+                          fontSize: 14,
+                        ),
+
+                        textAlign: TextAlign.justify,
+                      ),
+                    );
+                  },
                   error: (error, stackTrace) => Text(
                     error.toString(),
                     style: Theme.of(

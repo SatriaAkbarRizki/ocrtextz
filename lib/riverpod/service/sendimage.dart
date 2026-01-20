@@ -10,6 +10,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'sendimage.g.dart';
 
+final visibleText = StateProvider((ref) => false);
+
 @riverpod
 class UploadImage extends _$UploadImage {
   @override
@@ -18,6 +20,7 @@ class UploadImage extends _$UploadImage {
   }
 
   Future uploadImage(XFile image) async {
+    ref.read(visibleText.notifier).state = false;
     state = AsyncLoading();
 
     final imageFile = FormData.fromMap({
@@ -39,6 +42,7 @@ class UploadImage extends _$UploadImage {
     if (response.statusCode == 200) {
       final json = ScanOcrModel.fromJson(response.data);
       log(json.toJson().toString());
+
       state = AsyncData(json);
     } else {
       state = AsyncError(response.statusMessage.toString(), StackTrace.empty);
