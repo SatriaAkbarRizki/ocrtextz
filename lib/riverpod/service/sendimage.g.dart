@@ -6,21 +6,49 @@ part of 'sendimage.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$uploadImageHash() => r'e6729dce6ce26f796f7c3f28e3249c13487b2052';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [UploadImage].
 @ProviderFor(UploadImage)
-final uploadImageProvider =
-    AutoDisposeAsyncNotifierProvider<UploadImage, ScanOcrModel?>.internal(
-      UploadImage.new,
-      name: r'uploadImageProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$uploadImageHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+final uploadImageProvider = UploadImageProvider._();
 
-typedef _$UploadImage = AutoDisposeAsyncNotifier<ScanOcrModel?>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class UploadImageProvider
+    extends $AsyncNotifierProvider<UploadImage, ScanOcrModel?> {
+  UploadImageProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'uploadImageProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$uploadImageHash();
+
+  @$internal
+  @override
+  UploadImage create() => UploadImage();
+}
+
+String _$uploadImageHash() => r'b212d2ab09c500ccb044ab037677a975935a293b';
+
+abstract class _$UploadImage extends $AsyncNotifier<ScanOcrModel?> {
+  FutureOr<ScanOcrModel?> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final ref = this.ref as $Ref<AsyncValue<ScanOcrModel?>, ScanOcrModel?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<ScanOcrModel?>, ScanOcrModel?>,
+              AsyncValue<ScanOcrModel?>,
+              Object?,
+              Object?
+            >;
+    element.handleCreate(ref, build);
+  }
+}

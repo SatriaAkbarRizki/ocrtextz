@@ -71,8 +71,10 @@ Future<void> showModalBottomSheetHome(BuildContext context) async {
                       Future.delayed(Duration(milliseconds: 1500)).whenComplete(
                         () {
                           if (context.mounted) {
-                            ref.read(headerTitleProvider.notifier).state =
-                                "Saving to History";
+                            if (ref.read(isEnableAutoSave) == true) {
+                              ref.read(headerTitleProvider.notifier).state =
+                                  "Saving to History";
+                            }
                           }
                         },
                       );

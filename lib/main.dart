@@ -7,7 +7,9 @@ import 'package:ocrtextz/theme/theme.dart';
 
 Future main() async {
   await dotenv.load(fileName: ".env");
-  runApp(ProviderScope(child: const MainApp()));
+  runApp(
+    ProviderScope(child: const MainApp(), retry: (retryCount, error) => null),
+  );
 }
 
 class MainApp extends StatelessWidget {
