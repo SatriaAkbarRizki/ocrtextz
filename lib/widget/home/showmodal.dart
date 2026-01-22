@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ocrtextz/riverpod/homeriverpod.dart';
@@ -40,16 +41,7 @@ Future<void> showModalBottomSheetHome(BuildContext context) async {
                   child: AnimatedSwitcher(
                     duration: const Duration(milliseconds: 500),
                     transitionBuilder: (child, animation) {
-                      return FadeTransition(
-                        opacity: animation,
-                        child: SlideTransition(
-                          position: Tween<Offset>(
-                            begin: Offset(0.0, 0.0),
-                            end: Offset.zero,
-                          ).animate(animation),
-                          child: child,
-                        ),
-                      );
+                      return FadeTransition(opacity: animation, child: child);
                     },
                     child: Text(
                       headerTitle,
@@ -67,17 +59,6 @@ Future<void> showModalBottomSheetHome(BuildContext context) async {
                       if (!ref.read(visibleText)) {
                         ref.read(visibleText.notifier).state = true;
                       }
-
-                      Future.delayed(Duration(milliseconds: 1500)).whenComplete(
-                        () {
-                          if (context.mounted) {
-                            if (ref.read(isEnableAutoSave) == true) {
-                              ref.read(headerTitleProvider.notifier).state =
-                                  "Saving to History";
-                            }
-                          }
-                        },
-                      );
                     });
                     return AnimatedOpacity(
                       opacity: visibleData ? 1.0 : 0.0,

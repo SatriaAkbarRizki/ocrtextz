@@ -88,3 +88,44 @@ final class LinkUrlProvider extends $FunctionalProvider<String, String, String>
 }
 
 String _$linkUrlHash() => r'90431c03c7279bb46169cda59a13fb65315e636d';
+
+@ProviderFor(databases)
+final databasesProvider = DatabasesProvider._();
+
+final class DatabasesProvider
+    extends $FunctionalProvider<AppDatabase, AppDatabase, AppDatabase>
+    with $Provider<AppDatabase> {
+  DatabasesProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'databasesProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$databasesHash();
+
+  @$internal
+  @override
+  $ProviderElement<AppDatabase> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  AppDatabase create(Ref ref) {
+    return databases(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(AppDatabase value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<AppDatabase>(value),
+    );
+  }
+}
+
+String _$databasesHash() => r'4e9d290797ecfe00dd97eb46e04a69804124dcb1';
