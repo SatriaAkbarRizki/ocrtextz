@@ -9,7 +9,7 @@ import 'package:ocrtextz/database/database.dart';
 import 'package:ocrtextz/model/scanocr.dart';
 import 'package:ocrtextz/riverpod/homeriverpod.dart';
 import 'package:ocrtextz/riverpod/imutable.dart';
-import 'package:ocrtextz/riverpod/service/history.dart';
+import 'package:ocrtextz/riverpod/service/historydb.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'sendimage.g.dart';

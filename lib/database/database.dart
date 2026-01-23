@@ -20,6 +20,7 @@ class AppDatabase extends _$AppDatabase {
   @override
   int get schemaVersion => 1;
 
+
   static QueryExecutor _openConnection() {
     return driftDatabase(
       

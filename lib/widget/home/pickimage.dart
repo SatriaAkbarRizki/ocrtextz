@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:ocrtextz/riverpod/service/history.dart';
+import 'package:ocrtextz/riverpod/service/historydb.dart';
 import 'package:ocrtextz/riverpod/service/image.dart';
 import 'package:ocrtextz/riverpod/service/sendimage.dart';
 import 'package:ocrtextz/widget/home/showmodal.dart';

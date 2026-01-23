@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'history.dart';
+part of 'historydb.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -41,7 +41,7 @@ final class HistoryDatabaseProvider
   }
 }
 
-String _$historyDatabaseHash() => r'64780e20a0a9cb47b363bb00aae1c6b7b84a3401';
+String _$historyDatabaseHash() => r'3068f9014b879ccd1b6c8e178afe1ee40a6dd7d2';
 
 abstract class _$HistoryDatabase extends $Notifier<AsyncValue<Object?>> {
   AsyncValue<Object?> build();

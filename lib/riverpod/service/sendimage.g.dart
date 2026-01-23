@@ -33,7 +33,7 @@ final class UploadImageProvider
   UploadImage create() => UploadImage();
 }
 
-String _$uploadImageHash() => r'41952b4d7240b5c10db553854beb5e250d4d270d';
+String _$uploadImageHash() => r'139860e580f753920ecf82d3b84244039980cc10';
 
 abstract class _$UploadImage extends $AsyncNotifier<ScanOcrModel?> {
   FutureOr<ScanOcrModel?> build();
