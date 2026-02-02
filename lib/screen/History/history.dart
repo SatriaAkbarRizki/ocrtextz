@@ -70,9 +70,11 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                           tag: 'hero-cardhistory-$index',
                           child: Dismissible(
                             key: ValueKey('historyList-$index'),
-                            onDismissed: (direction) => ref
-                                .read(historyDatabaseProvider.notifier)
-                                .deleteHistory(dataHistoryList[index].id),
+                            onDismissed: (direction) {
+                              ref
+                                  .read(historyDatabaseProvider.notifier)
+                                  .deleteHistory(dataHistoryList[index].id);
+                            },
                             background: Container(
                               padding: EdgeInsets.all(35),
                               alignment: Alignment.centerRight,
@@ -90,21 +92,18 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                             ),
                             direction: DismissDirection.endToStart,
 
-                            child: Card(
-                              child: Padding(
-                                padding: const EdgeInsets.all(12),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      dataHistoryList[0].result,
-                                      maxLines: 4,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall
-                                          ?.copyWith(height: 1.5),
-                                      textAlign: TextAlign.justify,
-                                    ),
-                                  ],
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: Card(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(12),
+                                  child: Text(
+                                    dataHistoryList[index].result,
+                                    maxLines: 4,
+                                    style: Theme.of(context).textTheme.bodySmall
+                                        ?.copyWith(height: 1.5),
+                                    textAlign: TextAlign.justify,
+                                  ),
                                 ),
                               ),
                             ),

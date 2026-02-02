@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ocrtextz/riverpod/homeriverpod.dart';
@@ -15,6 +14,7 @@ Future<void> showModalBottomSheetHome(BuildContext context) async {
     isScrollControlled: true,
     showDragHandle: true,
     useSafeArea: true,
+
     transitionAnimationController: AnimationController(
       vsync: Navigator.of(context),
       duration: Duration(milliseconds: 600),
@@ -87,7 +87,7 @@ Future<void> showModalBottomSheetHome(BuildContext context) async {
                       opacity: visibleData ? 1.0 : 0.0,
                       duration: Duration(milliseconds: 500),
                       child: Text(
-                        'Have error on server, please try again ',
+                        'Have error on server, please try again and ensure have text on image ',
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: Colors.red,
                           fontWeight: FontWeight.bold,

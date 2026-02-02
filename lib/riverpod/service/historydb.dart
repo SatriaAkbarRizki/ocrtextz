@@ -11,10 +11,12 @@ part 'historydb.g.dart';
 class HistoryDatabase extends _$HistoryDatabase {
   late AppDatabase dbClient;
 
+  List<HistoryItem> listHistory = [];
+
   @override
   AsyncValue<Object?> build() {
     dbClient = ref.read(databasesProvider);
-    return const AsyncValue.data(List<HistoryItem>);
+    return const AsyncValue.data(<HistoryItem>[]);
   }
 
   Future getAllHistory() async {
@@ -24,7 +26,7 @@ class HistoryDatabase extends _$HistoryDatabase {
       () async => await dbClient.select(dbClient.historyItems).get(),
     );
     final data = state.value as List<HistoryItem>;
-    state = AsyncValue.data(data);
+    listHistory = data;
     log(data.length.toString());
   }
 
@@ -33,19 +35,15 @@ class HistoryDatabase extends _$HistoryDatabase {
     state = await AsyncValue.guard(
       () async => await dbClient.into(dbClient.historyItems).insert(value),
     );
+
+    state = AsyncValue.data(<HistoryItem>[]);
   }
 
   // Inside your deleteHistory method
   Future<void> deleteHistory(int id) async {
-    state = const AsyncValue.loading();
-
+    listHistory.removeWhere((element) => element.id == id);
     await (dbClient.delete(
       dbClient.historyItems,
     )..where((t) => t.id.equals(id))).go();
-
-    await getAllHistory();
-
-    // final data = await dbClient.select(dbClient.historyItems).get();
-    // if (ref.mounted) state = AsyncValue.data(data);
   }
 }
